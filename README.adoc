@@ -1,0 +1,25 @@
+= The average number of vowels
+
+This app calculate the average number of vowels per word for all the words in the file.
+
+== Stack
+
+- *Java 11*
+- *Apache Maven*
+- *Spring Boot*
+
+== Getting started
+
+=== Build maven artifacts
+
+[source,sh]
+----
+mvn clean install
+----
+
+=== Run app
+
+[source,sh]
+----
+mvn spring-boot:run
+----
