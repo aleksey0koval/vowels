@@ -4,10 +4,8 @@ import com.kavalchuk.vowels.service.FileService;
 import com.kavalchuk.vowels.service.WordService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,12 +25,11 @@ public class VowelsApplication {
         try {
             list = fileService.read(fileName);
         } catch (RuntimeException e) {
-            var defaultFile = "data/input.txt";
+            var defaultFile = "input.txt";
             System.out.println("***********************************************************************");
             System.out.printf("File '%s' doesn't exist!. Instead '%s' use default file '%s'.%n", fileName, fileName, defaultFile);
             System.out.println("***********************************************************************");
-
-            list = fileService.read(new ClassPathResource(Path.of(defaultFile).toString()).getFile().getPath());
+            list = fileService.read(defaultFile);
         }
         var words = wordService.calculateAverageVowels(list);
         System.out.println("***********************************************************************");
@@ -42,7 +39,7 @@ public class VowelsApplication {
         try {
             fileService.write(fileName, words);
         } catch (RuntimeException e) {
-            var defaultFile = "src/main/resources/data/output.txt";
+            var defaultFile = "output.txt";
             System.out.println("***********************************************************************");
             System.out.printf("Directory '%s' doesn't exist!. Instead '%s' use default file '%s'.%n", fileName, fileName, defaultFile);
             System.out.println("***********************************************************************");

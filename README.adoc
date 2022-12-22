@@ -7,6 +7,7 @@ This app calculate the average number of vowels per word for all the words in th
 - *Java 11*
 - *Apache Maven*
 - *Spring Boot*
+- *Docker*
 
 == Getting started
 
@@ -22,4 +23,13 @@ mvn clean install
 [source,sh]
 ----
 mvn spring-boot:run
+----
+
+=== Run app with docker
+
+[source,sh]
+----
+docker build -t kavalchuk/vowels:latest .
+
+docker run --rm -it kavalchuk/vowels:latest
 ----
